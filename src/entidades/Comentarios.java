@@ -1,10 +1,8 @@
-
 package entidades;
 
-
 public class Comentarios {
-    
- private String comentario;
+
+    private String comentario;
 
     public Comentarios() {
     }
@@ -20,8 +18,4 @@ public class Comentarios {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
- 
- 
-
-
 }

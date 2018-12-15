@@ -1,18 +1,18 @@
-
 package entidades;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 public class Post {
-    
- private Date momento;
- private String title;
- private String content;
- private Integer likes;
- private List<Comentarios> comentarios = new ArrayList<>();
+
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    private Date momento;
+    private String title;
+    private String content;
+    private Integer likes;
+    private List<Comentarios> comentarios = new ArrayList<>();
 
     public Post() {
     }
@@ -23,8 +23,6 @@ public class Post {
         this.content = content;
         this.likes = likes;
     }
-    
-    
 
     public Date getMomento() {
         return momento;
@@ -62,11 +60,28 @@ public class Post {
         return comentarios;
     }
 
-    public void addComentario(Comentarios comentario){
+    public void addComentario(Comentarios comentario) {
         comentarios.add(comentario);
     }
-    
-     public void removeComentario(Comentarios comentario){
+
+    public void removeComentario(Comentarios comentario) {
         comentarios.remove(comentario);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(title + "\n");
+        sb.append(likes);
+        sb.append(" Likes - ");
+        sb.append(sdf.format(momento) + "\n");
+        sb.append(content + "\n");
+        sb.append("Comentarios: \n");
+
+        for (Comentarios c : comentarios) {
+            sb.append(c.getComentario() + "\n");
+        }
+
+        return sb.toString();
     }
 }
